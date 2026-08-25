@@ -7,7 +7,7 @@ let api = axios.create({
 
 
 async function chatfnc(message, chatid, socketid) {
-    let data = await api.post('/chat', {
+    let data = await api.post('/api/chat', {
         message, chatid, socketid
     })
 
@@ -19,20 +19,20 @@ export async function userchatfnc() {
 
     console.log('running api chat fnc!')
 
-    let data = await api.get('/userchat')
+    let data = await api.get('/api/userchat')
 
     return data
 }
 
 
 export async function usermessagesfnc(chatid) {
-    let data = await api.get(`/usermessages/${chatid}`)
+    let data = await api.get(`/api/usermessages/${chatid}`)
 
     return data
 }
 
 export async function deletefnc(chatid) {
-    let data = await api.delete(`/delete/${chatid}`)
+    let data = await api.delete(`/api/delete/${chatid}`)
 
     return data
 }
