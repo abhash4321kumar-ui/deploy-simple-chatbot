@@ -11,7 +11,7 @@ myexpress.use(express.json())
 myexpress.use(cookieparser())
 
 myexpress.use(cors({
-    origin:'https://deploy-simple-chatbot.vercel.app/',
+    origin:'https://deploy-simple-chatbot.vercel.app',
     credentials: true
 }))
 

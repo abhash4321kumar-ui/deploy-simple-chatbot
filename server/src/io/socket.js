@@ -3,7 +3,7 @@ let {Server} = require('socket.io')
 function socketfnc(httpserver) {
     let io = new Server(httpserver, {
         cors:{
-            origin:'https://deploy-simple-chatbot.vercel.app/',
+            origin:'https://deploy-simple-chatbot.vercel.app',
             credentials: true
         }
     })
