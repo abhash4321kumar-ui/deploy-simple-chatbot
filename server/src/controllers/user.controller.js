@@ -82,7 +82,7 @@ async function verifyfnc(req, res) {
             })
         }
 
-        let redirectdata = `hello ${user.username} thanks for verifying! click here to login <a href="http://localhost:5173/login">login</a>`
+        let redirectdata = `hello ${user.username} thanks for verifying! click here to login <a href="https://deploy-simple-chatbot.vercel.app/login">login</a>`
 
         return res.send(redirectdata)
 

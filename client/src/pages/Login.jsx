@@ -37,7 +37,7 @@ const Login = () => {
                         </svg>
                     </div>
                     <h2 className="text-2xl font-semibold text-[#F3EFE4]">Welcome back</h2>
-                    <p className="text-[#8FA090] text-sm">Login to continue your chats</p>
+                    <p className="text-[#8FA090] text-sm"><span className='capitalize'>login</span> to continue your chats</p>
                 </div>
  
                 <form onSubmit={submitform} className="flex flex-col gap-4">
@@ -67,6 +67,10 @@ const Login = () => {
                         Log in
                     </button>
                 </form>
+
+                <p className="text-[#8FA090] text-sm mt-5 text-center"><span className='capitalize'>signup</span> for new <span onClick={()=>{
+                    tonavigate('/signup')
+                }} className="capitalize text-[#B8860B] underline cursor-pointer">account</span></p>
             </div>
         </div>
     )
