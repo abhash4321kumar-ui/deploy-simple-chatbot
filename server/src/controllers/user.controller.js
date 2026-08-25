@@ -93,8 +93,8 @@ async function verifyfnc(req, res) {
 
 async function resendfnc(req, res) {
     try {
-        
-         let { token } = req.query
+
+        let { token } = req.query
 
         if (!token) {
             return res.status(401).json({
@@ -115,9 +115,9 @@ async function resendfnc(req, res) {
         let user = await usermodel.findOne({ usermail })
 
 
-         let welcomemessage = await welcomemessagefnc(user.username, user.usermail)
+        let welcomemessage = await welcomemessagefnc(user.username, user.usermail)
 
-         let redirectdata = `hello ${user.username} resend message sent on ${user.usermail}`
+        let redirectdata = `hello ${user.username} resend message sent on ${user.usermail}`
 
         return res.send(redirectdata)
 
@@ -166,7 +166,11 @@ async function loginfnc(req, res) {
             usermail: user.usermail
         }, process.env.JWT_KEY)
 
-        res.cookie('token', token)
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none'
+        });
 
         res.status(201).json({
             message: 'user loggedIn successfully!',
