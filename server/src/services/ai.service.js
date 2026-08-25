@@ -64,7 +64,7 @@ async function generatecontent(message) {
             })
         })
 
-        console.log('giving response!')
+        console.log('giving response from giving response!')
         console.log(response)
 
         return response
