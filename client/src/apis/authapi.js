@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let api = axios.create({
-    baseURL: import.meta.env.SERVER_SIDE_URL,
+    baseURL: import.meta.env.VITE_SERVER_SIDE_URL,
     withCredentials: true
 })
 
