@@ -5,9 +5,12 @@ let tvly = tavily({ apiKey: process.env.TAVILY_API_KEY })
 async function tavilyresponse(query) {
     try {
 
+        console.log(query)
         console.log('running tavily')
 
-        let data = await tvly.search(query.search)
+        let data = await tvly.search(query)
+
+        console.log(data)
 
         if (!data.results || data.results.length === 0) {
             return "No current data found for this query."

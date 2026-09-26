@@ -4,13 +4,10 @@ let jwt = require('jsonwebtoken')
 const welcomemessagefnc = require('../services/transporter.service')
 
 async function signupfnc(req, res, next) {
-    try {
-
+  try {
         console.log('server signupfnc running!')
-
         let { username, usermail, userpassword } = req.body
-
-        console.log(username, usermail, userpassword)
+        console.log("Received Data:", username, usermail, userpassword)
 
         let checkuser = await usermodel.findOne({
             $or: [
@@ -20,8 +17,9 @@ async function signupfnc(req, res, next) {
         })
 
         if (checkuser) {
-            return res.status(401).json({
-                message: 'user already exist!'
+           
+            return res.status(409).json({
+                message: 'User already exists with this email or username!'
             })
         }
 
@@ -33,16 +31,24 @@ async function signupfnc(req, res, next) {
             userpassword: hashpassword
         })
 
+        try {
+            await welcomemessagefnc(username, usermail);
+            console.log("Verification email sent successfully!");
+        } catch (emailError) {
+            console.log("Email Failed to send:", emailError.message);
+        }
 
-        let welcomemessage = await welcomemessagefnc(username, usermail)
-
-        res.status(201).json({
-            message: 'user created succesfully!',
+        return res.status(201).json({
+            message: 'User created successfully! Please check your email.',
             user: user
         })
 
     } catch (error) {
-        console.log(error)
+        console.log("Signup Server Error:", error)
+    
+        return res.status(500).json({
+            message: 'Internal server error while signing up!'
+        })
     }
 }
 
