@@ -14,7 +14,7 @@ let openRouterModel = new ChatOpenAI({
             "X-Title": "Express Chatbot"
         }
     },
-    modelName: 'inclusionai/ling-3.0-flash-sante:free', 
+    modelName: process.env.OPENROUTER_MODEL, 
     temperature: 0.7
 });
 
