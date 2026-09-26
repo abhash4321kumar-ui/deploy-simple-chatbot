@@ -10,7 +10,7 @@ let openRouterModel = new ChatOpenAI({
     configuration: {
         baseURL: "https://openrouter.ai/api/v1", 
         defaultHeaders: {
-            "HTTP-Referer": "https://deploy-simple-chatbot.vercel.app/", 
+            "HTTP-Referer": "https://deploy-simple-chatbot.vercel.app", 
             "X-Title": "Express Chatbot"
         }
     },
